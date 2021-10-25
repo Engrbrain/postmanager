@@ -1,0 +1,19 @@
+<h1>Create Posts</h1>
+<p>This page allows you create posts</p>
+
+<!--<textarea row="6" #postInput></textarea><br/>-->
+
+<!--<textarea row="6" [value] = "newPost" #postInput></textarea> <br/> -->
+<mat-card>
+  <mat-form-field>
+    <input placeholder="Enter Title of your Post" matInput type="text" [(ngModel)]="enteredTitle">
+  </mat-form-field>
+<mat-form-field>
+  <textarea placeholder="Enter Full Text of your Post"  matInput row="6" [(ngModel)]="enteredContent"></textarea>
+</mat-form-field> <br/>
+<button mat-raised-button color="primary" (click) ="onAddPost()">Publish Post Method</button>
+</mat-card>
+<hr/>
+<!--<button (click) ="onAddPost(postInput)">Publish Post</button> -->
+<!-- <p>{{ newPost }}</p> -->
+<!-- <p>{{ enteredvalue }}</p> -->
