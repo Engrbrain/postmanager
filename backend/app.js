@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Header",
+  res.setHeader("Access-Control-Allow-Headers",
   "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader("Acess-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
   next();
@@ -19,7 +19,7 @@ app.post("/api/posts", (req, res, next) => {
     message: 'Post added Successfully'
   });
 });
-app.use('/api/posts', (req, res, next) => {
+app.get('/api/posts', (req, res, next) => {
   const posts = [
     {id:'jskjsj987', title: 'First Server-Side Post', content: 'This is coming from the server'},
     {id:'ishsghj34', title: 'Second Server-Side Post', content: 'This is coming from the server'},
