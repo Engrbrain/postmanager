@@ -23,7 +23,8 @@ export class PostsService {
   }
 
   addPost(title: string, content: string){
-    const post: Post = {title: title, content: content};
+    var id = Math.random().toString(36).slice(2);
+    const post: Post = {id, title: title, content: content};
     this.posts.push(post);
     this.postsUpdated.next([...this.posts]);
   }
