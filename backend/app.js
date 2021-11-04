@@ -12,6 +12,7 @@ app.use((req, res, next) => {
   res.setHeader("Acess-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS")
   next();
 });
+
 app.post("/api/posts", (req, res, next) => {
   const post = req.body; // This will return one post
   console.log(post);
@@ -19,6 +20,7 @@ app.post("/api/posts", (req, res, next) => {
     message: 'Post added Successfully'
   });
 });
+
 app.get('/api/posts', (req, res, next) => {
   const posts = [
     {id:'jskjsj987', title: 'First Server-Side Post', content: 'This is coming from the server'},
