@@ -1,11 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
 
 const Post = require('./models/post')
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+mongoose.connect("mongodb+srv://engrbrain:Fetele0301776@maincluster.1xeov.mongodb.net/postmanager?retryWrites=true&w=majority")
+.then(() => {
+  console.log('Connection to database!')
+})
+.catch(() => {
+  console.log('Connection Failed')
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
