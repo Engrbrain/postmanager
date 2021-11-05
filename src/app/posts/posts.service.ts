@@ -35,6 +35,10 @@ export class PostsService {
     return this.postsUpdated.asObservable();
   }
 
+  getPost(id: string){
+    return{...this.posts.find(p => p.id === id)};
+  }
+
   addPost(title: string, content: string){
     var id = Math.random().toString(36).slice(2);
     const post: Post = {id: id, title: title, content: content};
