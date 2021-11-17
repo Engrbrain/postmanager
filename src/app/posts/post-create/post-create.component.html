@@ -6,18 +6,18 @@
 <!--<textarea row="6" [value] = "newPost" #postInput></textarea> <br/> -->
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-<form (submit) = "onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+<form [formGroup]="form" (submit) = "onSavePost()" *ngIf="!isLoading">
   <mat-form-field>
-    <input placeholder="Enter Title of your Post" matInput type="text" [ngModel] = "post?.title" name="title" required minlength="3" #title="ngModel">
-    <mat-error *ngIf="title.invalid">Please enter a valid post title</mat-error>
+    <input placeholder="Enter Title of your Post" matInput type="text" formControlName="title">
+    <mat-error *ngIf="form.get('title').invalid">Please enter a valid post title</mat-error>
   </mat-form-field>
   <div>
     <button mat-stroked-button type="button" (click)= "filePicker.click()">Pick Image</button>
   <input type="file" #filePicker>
   </div>
 <mat-form-field>
-  <textarea placeholder="Enter Full Text of your Post"  matInput row="6" [ngModel] = "post?.content" name="content" required minlength="3" #content="ngModel"></textarea>
-  <mat-error *ngIf="content.invalid">Please enter a valid post content</mat-error>
+  <textarea placeholder="Enter Full Text of your Post"  matInput row="6"  formControlName="content"></textarea>
+  <mat-error *ngIf="form.get('content').invalid">Please enter a valid post content</mat-error>
 
 </mat-form-field> <br/>
 <button mat-raised-button color="primary" type="submit">Publish Post Method</button>
