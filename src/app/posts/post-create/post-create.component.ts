@@ -3,6 +3,8 @@ import { Component} from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
+import { mimeType } from "./mime-type.validator"
+
 
 import { PostsService } from '../posts.service';
 
@@ -22,6 +24,7 @@ export class PostCreateComponent implements OnInit {
   post: Post | any;
   isLoading = false;
   form: FormGroup | any
+  imagePreview: string;
 
   constructor(public postsService: PostsService, public route: ActivatedRoute){}
 
@@ -56,8 +59,11 @@ export class PostCreateComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files[0]
     this.form.patchValue({image: file});
     this.form.get('image').updateValueAndValidity();
-    console.log(file);
-    console.log(this.form);
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string
+    };
+    reader.readAsDataURL(file);
 
   }
 
