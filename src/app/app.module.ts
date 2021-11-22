@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import {HeaderComponent} from './header/header.component';
 import {PostListComponent} from './posts/post-list/post-list.component'
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,8 @@ import {PostListComponent} from './posts/post-list/post-list.component'
     MatExpansionModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
