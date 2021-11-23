@@ -7,6 +7,7 @@ import { mimeType } from "./mime-type.validator"
 
 
 import { PostsService } from '../posts.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component ({
   selector: 'app-post-create',
@@ -66,6 +67,8 @@ export class PostCreateComponent implements OnInit {
       }
     });
   }
+
+
   onImagePicked(event: Event ){
     const file = (event.target as HTMLInputElement).files[0]
     this.form.patchValue({image: file});
