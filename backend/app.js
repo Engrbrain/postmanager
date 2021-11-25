@@ -23,6 +23,6 @@ mongoose.connect("mongodb+srv://engrbrain:Fetele0301776@maincluster.1xeov.mongod
 app.use(cors());
 
 app.use("/api/posts", postsRoutes);
-app.use("/api/user", postsRoutes);
+app.use("/api/user", userRoutes);
 
 module.exports = app;

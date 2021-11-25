@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.post("/signup", (req, res, next) => {
+  //console.log(req.body.password)
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
     const user = new User({
@@ -51,6 +52,7 @@ const token = jwt.sign(
   "Awnkm0akm?##Fetele03017761988%%D3fault100$%%",
   { expiresIn: "1h" }
  );
+ console.log(token);
  res.status(200).json({
    token: token
  });
