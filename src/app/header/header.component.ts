@@ -20,6 +20,10 @@ this.authListenerSubs = this.authService
 });
 }
 
+OnLogout(){
+  this.authService.logout();
+}
+
 ngOnDestroy() {
 this.authListenerSubs.unsubscribe();
 }
