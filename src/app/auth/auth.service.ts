@@ -6,6 +6,7 @@ import { AuthData } from "./auth-data.model";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
+  private isAuthenticated = false;
   private token: string;
   private authStatusListener = new Subject<boolean>();
   constructor(private http: HttpClient) {}
@@ -16,6 +17,10 @@ export class AuthService {
 
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
+  }
+
+  getIsAuth(){
+    return this.isAuthenticated;
   }
 
 createUser(email: string, password: string){
@@ -32,7 +37,10 @@ login(email: string, password: string){
   .subscribe(response => {
     const token = response.token;
     this.token = token;
-    this.authStatusListener.next(true);
+    if (token){
+      this.isAuthenticated = true;
+      this.authStatusListener.next(true);
+    }
   })
 }
 
