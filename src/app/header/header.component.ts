@@ -20,7 +20,7 @@ this.authListenerSubs = this.authService
 });
 }
 
-OnLogout(){
+onLogout(){
   this.authService.logout();
 }
 

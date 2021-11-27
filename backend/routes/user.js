@@ -54,7 +54,8 @@ const token = jwt.sign(
  );
  console.log(token);
  res.status(200).json({
-   token: token
+   token: token,
+   expiresIn: 3600 // Duration of 1 Hour in Seconds
  });
  })
  .catch(err => {
