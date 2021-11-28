@@ -13,6 +13,7 @@ userIsAuthenticated = false;
   constructor (private authService: AuthService){}
 
 ngOnInit() {
+  this.userIsAuthenticated = this.authService.getIsAuth();
 this.authListenerSubs = this.authService
 .getAuthStatusListener()
 .subscribe(isAthenticated => {
