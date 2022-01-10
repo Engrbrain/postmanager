@@ -24,6 +24,7 @@ ngOnInit(){
 
 onLogin(form: NgForm){
   if(form.invalid){
+    this.isLoading = true;
     return;
   }
   this.isLoading = true;
