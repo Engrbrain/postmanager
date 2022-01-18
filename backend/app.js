@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
 
-mongoose.connect("mongodb+srv://engrbrain:Fetele0301776@maincluster.1xeov.mongodb.net/postmanager?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://engrbrain:" +process.env.MONGO_ATLAS_PW+ "@maincluster.1xeov.mongodb.net/postmanager?retryWrites=true&w=majority")
 .then(() => {
   console.log('Connection to database!')
 })
@@ -21,6 +21,19 @@ mongoose.connect("mongodb+srv://engrbrain:Fetele0301776@maincluster.1xeov.mongod
 });
 
 app.use(cors());
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  next();
+});
 
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);
